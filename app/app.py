@@ -1,4 +1,3 @@
-
 from flask import Flask
 import mysql.connector
 import time
@@ -24,18 +23,26 @@ def home():
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))")
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255)
+        )
+    """)
 
+    # Check if table is empty
+    cursor.execute("SELECT COUNT(*) FROM users")
+    count = cursor.fetchone()[0]
+
+    # Insert only once
+    if count == 0:
+        cursor.execute("INSERT INTO users (name) VALUES ('ABC')")
+        conn.commit()
+
+    # Fetch data
     cursor.execute("SELECT * FROM users")
     data = cursor.fetchall()
 
     return str(data)
-
-cursor.execute("SELECT COUNT(*) FROM users")
-count = cursor.fetchone()[0]
-
-if count == 0:
-    cursor.execute("INSERT INTO users (name) VALUES ('ABC')")
-    conn.commit()
 
 app.run(host="0.0.0.0", port=5000)
