@@ -7,7 +7,7 @@ A Flask backend connects to a MySQL database running in a separate container.
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
 * Python (Flask)
 * MySQL
@@ -19,9 +19,9 @@ A Flask backend connects to a MySQL database running in a separate container.
 ## Features
 
 * Multi-container setup using Docker Compose
-* Backend API built with Flask
+* Flask-based backend API
 * MySQL database integration
-* Automatic container communication
+* Automatic service communication via Docker network
 
 ---
 
@@ -43,7 +43,7 @@ http://localhost:5000
 ## Project Structure
 
 ```
-docker-compose-demo/
+docker-compose-project/
 │
 ├── docker-compose.yml
 └── app/
@@ -58,11 +58,11 @@ docker-compose-demo/
 
 * Dockerfile vs Docker Compose
 * Container networking
-* Volume mapping
-* Debugging build and dependency issues
+* Docker build cache issues and debugging
+* Database persistence in containers
 
 ---
 
-## GitHub Repository
+##  Author
 
-https://github.com/sudhabmk7-oss/docker-compose-project
+Sudha
