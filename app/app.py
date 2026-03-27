@@ -31,4 +31,11 @@ def home():
 
     return str(data)
 
+cursor.execute("SELECT COUNT(*) FROM users")
+count = cursor.fetchone()[0]
+
+if count == 0:
+    cursor.execute("INSERT INTO users (name) VALUES ('ABC')")
+    conn.commit()
+
 app.run(host="0.0.0.0", port=5000)
