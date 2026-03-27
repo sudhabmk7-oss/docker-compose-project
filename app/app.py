@@ -23,9 +23,8 @@ def get_db_connection():
 def home():
     conn = get_db_connection()
     cursor = conn.cursor()
+
     cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))")
-    cursor.execute("INSERT INTO users (name) VALUES ('Suma')")
-    conn.commit()
 
     cursor.execute("SELECT * FROM users")
     data = cursor.fetchall()
